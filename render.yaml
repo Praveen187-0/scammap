@@ -1,0 +1,33 @@
+# Render Blueprint: New > Blueprint > pick this repo.
+# Singapore is the closest Render region to India, which keeps lookups well under 500 ms.
+services:
+  - type: web
+    name: scammap
+    runtime: docker
+    region: singapore
+    # Free instances sleep after 15 minutes idle and take about a minute to wake.
+    # Use "starter" for judging day, or keep "free" plus an uptime pinger on /health every 5 minutes.
+    plan: starter
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: scammap-db
+          property: connectionString
+      - key: PEPPER
+        generateValue: true
+      - key: LICENSE_ENFORCE
+        value: "true"
+      - key: TRUST_BODY_IP_PREFIX
+        value: "true"
+      - key: LICENSE_JSON
+        sync: false
+
+databases:
+  - name: scammap-db
+    region: singapore
+    # Free Render Postgres expires 30 days after creation; fine for the event, upgrade for anything longer.
+    plan: free
+    databaseName: scammap
+    # Empty allow list = reachable only from Render services, not the internet.
+    ipAllowList: []

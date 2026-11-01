@@ -1,0 +1,21 @@
+# Licence signing keys: the private key must NEVER be committed.
+keys/
+*.pem
+*.key
+licence-*.json
+licences/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Build output and deps
+node_modules/
+dist/
+coverage/
+*.log
+.DS_Store
+
+# Large dataset files (GitHub rejects files over 100 MB)
+data/creditcard.csv

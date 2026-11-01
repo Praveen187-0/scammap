@@ -1,0 +1,59 @@
+# ScamMap integrations, without code.
+#
+# Edit and save this file: the server reloads it within seconds (no restart). Each connector switches itself on
+# when the environment variables it uses are set in .env (.env is read at start-up: restart after editing it).
+# Status and a "Send test" button for each output: Help > Integrations, or `npm run integrations`.
+# Step-by-step setup for every connector: README.md, section "Integrations setup".
+#
+# outputs: where events go.  on: alert (SPIKE / NEW_TYPE), defence (an attack the trust rules caught),
+#          report (every new report; area and scam type only, never the number or the reporter)
+#          filter: areas (pincodes), cities, scam_types      lang: en | hi      template: "{text}" placeholders:
+#          {text} {area} {city} {pincode} {type} {scam_type} {at}
+# inputs:  lists of known scam identifiers from partners or advisories (CSV columns: type,value,label).
+#          They show as "Also listed by ..." and never count as reports.
+
+outputs:
+  - name: area-alerts-telegram
+    type: telegram
+    on: [alert]
+    bot_token: ${TELEGRAM_BOT_TOKEN}
+    chat_id: ${TELEGRAM_ALERT_CHAT_ID}
+
+  - name: fraud-team-slack
+    type: slack
+    on: [alert, defence]
+    webhook_url: ${SLACK_WEBHOOK_URL}
+
+  - name: bank-fraud-desk
+    type: webhook
+    on: [report, alert]
+    url: ${BANK_WEBHOOK_URL}
+    secret: ${BANK_WEBHOOK_SECRET}
+    filter:
+      cities: [Bengaluru, Mumbai]
+
+  - name: alerts-by-email
+    type: email
+    on: [alert]
+    smtp_url: ${SMTP_URL}
+    from: ${ALERT_EMAIL_FROM}
+    to: ${ALERT_EMAIL_TO}
+
+inputs:
+  - name: partner-blocklist
+    type: csv_file
+    path: data/external/blocklist.csv
+    label: Partner blocklist (demo)
+
+  # Numbers that Reddit users (r/ScamNumbers, r/Scams) reported as fake "Amazon support" lines. Unverified, US (+1)
+  # numbers, added by hand from posts (no usernames kept). Shown as "Also listed by", never counted as reports.
+  - name: reddit-amazon-numbers
+    type: csv_file
+    path: data/external/reddit-amazon-scam-numbers.csv
+    label: Reddit r/ScamNumbers (unverified)
+
+  - name: advisory-feed
+    type: json_url
+    url: ${ADVISORY_FEED_URL}
+    every_minutes: 30
+    label: Advisory feed

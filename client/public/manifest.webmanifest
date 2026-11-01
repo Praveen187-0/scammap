@@ -1,0 +1,104 @@
+{
+  "id": "/",
+  "name": "ScamMap: स्कैम मैप",
+  "short_name": "ScamMap",
+  "description": "Check numbers, UPI IDs and links before you trust them. Report scams anonymously.",
+  "start_url": "/#check",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f5f7f8",
+  "theme_color": "#13212c",
+  "lang": "en-IN",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "share_target": {
+    "action": "/",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "shortcuts": [
+    {
+      "name": "Report a scam",
+      "short_name": "Report",
+      "url": "/#report",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Check a number",
+      "short_name": "Check",
+      "url": "/#check",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Lost money? Get help now",
+      "short_name": "Lost money",
+      "url": "/#lost",
+      "icons": [
+        {
+          "src": "/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "categories": [
+    "security",
+    "utilities",
+    "finance"
+  ],
+  "orientation": "portrait",
+  "prefer_related_applications": false,
+  "screenshots": [
+    {
+      "src": "/screenshots/check-narrow.png",
+      "sizes": "540x1170",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Check a number, UPI ID or SMS sender before you trust it"
+    },
+    {
+      "src": "/screenshots/lost-narrow.png",
+      "sizes": "540x1170",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Lost money? The steps for the first hour"
+    },
+    {
+      "src": "/screenshots/campaigns-wide.png",
+      "sizes": "1280x800",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Scam campaigns and how they spread"
+    }
+  ]
+}

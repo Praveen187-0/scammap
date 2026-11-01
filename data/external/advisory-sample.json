@@ -1,0 +1,13 @@
+{
+  "source": "ScamMap sample advisory feed (demo data, not a real advisory)",
+  "updated": "2026-11-01",
+  "items": [
+    { "type": "sender_id", "value": "VM-SBIUPD", "label": "Sample advisory: fake bank KYC SMS sender (demo data)" },
+    { "type": "sender_id", "value": "JD-AMZORD", "label": "Sample advisory: fake Amazon order SMS sender (demo data)" },
+    { "type": "url", "value": "https://amaz0n-refund-desk.top/claim", "label": "Sample advisory: fake Amazon refund page (demo data)" },
+    { "type": "url", "value": "https://indiapost-redelivery-fee.site/pay", "label": "Sample advisory: fake parcel re-delivery fee page (demo data)" },
+    { "type": "url", "value": "https://electricity-bill-update.top/kyc", "label": "Sample advisory: fake power-cut KYC page (demo data)" },
+    { "type": "upi", "value": "amzrefund.demo@ybl", "label": "Sample advisory: fake Amazon refund UPI ID (demo data)" },
+    { "type": "upi", "value": "customs.fee.demo@okaxis", "label": "Sample advisory: fake customs-fee UPI ID (demo data)" }
+  ]
+}

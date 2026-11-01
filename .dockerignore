@@ -1,0 +1,9 @@
+node_modules
+dist
+keys
+*.pem
+.env
+.env.*
+licence-*.json
+licences
+.git
